@@ -30,7 +30,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
 		-->
-	
+
 	<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: ms-appx-web: https://*.gstatic.com  https://*.googleapis.com http://*.google.com   http://*.gstatic.com  'unsafe-eval' ;
 		style-src 'self' 'unsafe-inline' https://*.googleapis.com ;
 		script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com  ;
@@ -62,7 +62,7 @@
 <body>
 	<!-- page 1 -->
 	<div data-role="page" id="page1">
-		<div data-role="header">
+		<div data-role="header" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#page1" class="ui-btn-active ui-state-persist">Page 1</a></li>
@@ -73,7 +73,13 @@
 		</div>
 
 		<div class="ui-content">
+			<button id="doSetDiv">SetDiv</button>
 			<p>Page 1 content goes here</p>
+			<h1>Hello, World!</h1>
+			<div id="page1map" class="map_canvas">
+				<button id="button">Click me!</button>
+			</div>
+			<p>This is some more content so that we get some scrolling on the page</p>
 		</div><!-- end page 1 content -->
 
 		<div data-role="footer" data-position="fixed">
@@ -96,6 +102,9 @@
 
 		<div class="ui-content">
 			<p>This is page 2</p>
+			<div id="page2map" class="map_canvas">
+				<button id="button">Click me!</button>
+			</div>
 		</div><!-- end page 2 content -->
 
 		<div data-role="footer" data-position="fixed">
