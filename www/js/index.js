@@ -22,6 +22,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 var map = null;
+var marker = null;
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
@@ -44,19 +45,25 @@ function onDeviceReady() {
             tilt: 60,
             bearing: 140,
             duration: 5000
+            
         });
 
         // Add a maker
-        var marker = map.addMarker({
+        marker = map.addMarker({
             position: { lat: 37.422359, lng: -122.084344 },
             title: "Welecome to \n" +
                 "Cordova GoogleMaps plugin for iOS and Android",
             snippet: "This plugin is awesome!",
-            animation: plugin.google.maps.Animation.BOUNCE
+            animation: plugin.google.maps.Animation.BOUNCE,
+            icon: {
+                url: "img/logo.png"
+            }
+
         });
 
+
         // Show the info window
-        marker.showInfoWindow();
+       // marker.showInfoWindow();
     });
 
     var setDivButton = document.getElementById("doSetDiv");
@@ -72,4 +79,20 @@ function onDeviceReady() {
             map.setDiv(document.getElementById("page1map"));
         }
     });
+
+    var removebutton = document.getElementById("mapMarker");
+    removebutton.addEventListener("click", function(){
+            console.log("remove");
+            var xxx = marker.remove();
+            xxx.then(success, failure);
+    });
+
 }
+function success(result){
+    console.log("success"+result);
+}
+
+function failure(result){
+    console.log("failure");
+}
+
